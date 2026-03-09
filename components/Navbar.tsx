@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import Image from "next/image";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -33,11 +32,10 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-6 h-18 flex items-center justify-between py-4">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
-          <Image
-            src="/images/logo/logo.png"
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/topstreaming-website/images/logo/logo.png"
             alt="TopStreaming"
-            width={160}
-            height={48}
             className="h-10 w-auto"
           />
         </Link>

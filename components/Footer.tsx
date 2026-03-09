@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 
 const services = [
   "Digital Marketing",
@@ -17,11 +16,10 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="md:col-span-1">
-            <Image
-              src="/images/logo/logo.png"
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/topstreaming-website/images/logo/logo.png"
               alt="TopStreaming"
-              width={140}
-              height={42}
               className="h-9 w-auto mb-4"
             />
             <p className="text-gray-500 text-sm leading-relaxed mt-4">

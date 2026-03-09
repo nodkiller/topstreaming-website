@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 
@@ -10,34 +9,39 @@ export const metadata: Metadata = {
 
 const projects = [
   {
+    slug: "t32",
     title: "T32",
     category: "Marketing · Video Production",
-    desc: "A comprehensive brand campaign combining video production and digital marketing strategies to elevate T32's market presence and reach new audiences.",
-    image: "/images/portfolio/portfolio-1.png",
+    desc: "A comprehensive brand campaign combining video production and digital marketing to elevate T32's market presence across Australian and Chinese-Australian communities.",
+    image: "/topstreaming-website/images/portfolio/portfolio-1.png",
     tags: ["Marketing", "Video Production"],
   },
   {
+    slug: "mirror-planet",
     title: "Mirror Planet PFP DAO",
     category: "Video Production",
     desc: "Creative video production for an innovative Web3 project, crafting compelling visual narratives that communicated complex concepts to a mainstream audience.",
-    image: "/images/portfolio/portfolio-2.png",
+    image: "/topstreaming-website/images/portfolio/portfolio-2.png",
     tags: ["Video Production", "Web3"],
   },
   {
+    slug: "tickshop",
     title: "TickShop",
     category: "Business Consulting · Marketing",
     desc: "Strategic business consulting combined with targeted digital marketing campaigns that drove significant growth in TickShop's online traffic and conversions.",
-    image: "/images/portfolio/portfolio-3.png",
+    image: "/topstreaming-website/images/portfolio/portfolio-3.png",
     tags: ["Business Consulting", "Marketing", "SEO"],
   },
   {
+    slug: "boundless",
     title: "Boundless",
     category: "Marketing · Web Development",
     desc: "End-to-end digital marketing and web development solution that established Boundless as a recognised brand in the Australian market.",
-    image: "/images/portfolio/portfolio-4.png",
+    image: "/topstreaming-website/images/portfolio/portfolio-4.png",
     tags: ["Marketing", "Web Development"],
   },
   {
+    slug: "holiday-xp",
     title: "Holiday XP",
     category: "KOL Marketing · Marketing",
     desc: "A multi-platform KOL marketing campaign leveraging influencers on RED and Instagram to drive awareness and bookings for Holiday XP's unique experiences.",
@@ -45,6 +49,7 @@ const projects = [
     tags: ["KOL Marketing", "RED", "Instagram"],
   },
   {
+    slug: "top-trend",
     title: "Top Trend",
     category: "Marketing",
     desc: "Comprehensive digital marketing strategy that positioned Top Trend as a leading voice in its industry, growing social following and driving qualified leads.",
@@ -81,18 +86,19 @@ export default function PortfolioPage() {
       <section className="py-16 px-6">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project) => (
-            <div
-              key={project.title}
-              className="bg-[#12121a] border border-white/5 rounded-2xl overflow-hidden hover:border-amber-500/30 transition-all duration-300 hover:-translate-y-1 group"
+            <Link
+              key={project.slug}
+              href={`/portfolio/${project.slug}`}
+              className="bg-[#12121a] border border-white/5 rounded-2xl overflow-hidden hover:border-amber-500/30 transition-all duration-300 hover:-translate-y-1 group block"
             >
               {/* Image */}
               <div className="aspect-video bg-[#1a1a28] relative overflow-hidden">
                 {project.image ? (
-                  <Image
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
                     src={project.image}
                     alt={project.title}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                 ) : (
                   <div className="absolute inset-0 flex items-center justify-center">
@@ -105,6 +111,12 @@ export default function PortfolioPage() {
                   </div>
                 )}
                 <div className="absolute inset-0 bg-gradient-to-t from-[#12121a] via-transparent to-transparent opacity-60" />
+                {/* Hover overlay */}
+                <div className="absolute inset-0 bg-amber-500/0 group-hover:bg-amber-500/5 transition-all duration-300 flex items-center justify-center">
+                  <span className="opacity-0 group-hover:opacity-100 transition-opacity bg-amber-500 text-black text-sm font-semibold px-4 py-2 rounded-full">
+                    View Case Study →
+                  </span>
+                </div>
               </div>
 
               {/* Content */}
@@ -129,7 +141,7 @@ export default function PortfolioPage() {
                   ))}
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </section>
